@@ -12,15 +12,17 @@ function changeKey(e) {
     console.log(pressedKey)
 
     if (target === pressedKey) {
-        randomChar();
-        removeBg(target);
+        const char = randomChar();
+        if (target !== char) {
+            removeBg(target);
+        }
         scoreIncrease();
-    }
-    if(e.key === 'Escape') {
-        gameOver();
     }
     else {
         lifeDecrease();
+    }
+    if (e.key === 'Escape') {
+        gameOver();
     }
 }
 
@@ -31,6 +33,12 @@ function scoreIncrease() {
     const score = currentScore + 1;
     currentScoreElementText.innerText = score;
     document.getElementById('last-score').innerText = score;
+    const highScoreElementText = document.getElementById('high-score');
+    const highScoreText = highScoreElementText.innerText;
+    const highScore = parseInt(highScoreText);
+    if (highScore < score) {
+        highScoreElementText.innerText = score;
+    }
 }
 
 function lifeDecrease() {
@@ -39,7 +47,7 @@ function lifeDecrease() {
     const currentLife = parseInt(currentLifeText);
     const life = currentLife - 1;
     currentLifeElementText.innerText = life;
-    if(life === 0) {
+    if (life === 0) {
         gameOver();
     }
 }
