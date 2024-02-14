@@ -1,4 +1,6 @@
 const char = randomChar();
-const charPlace = document.getElementById('char-text');
-charPlace.innerText = char;
-coloredBg(char);
+function showKey(char) {
+    const charPlace = document.getElementById('char-text');
+    charPlace.innerText = char;
+    coloredBg(char);
+}

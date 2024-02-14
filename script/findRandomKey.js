@@ -3,5 +3,6 @@ function randomChar() {
     const alphabet = alphabets.split('');
     const index = Math.round(Math.random() * 25);
     const char = alphabet[index];
+    showKey(char);
     return char;
 }
